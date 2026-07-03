@@ -1,0 +1,24 @@
+.page {
+  padding: 24px 0 40px;
+}
+
+.content {
+  margin: 0 auto;
+  width: 361px;
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    padding: 32px 0 56px;
+  }
+
+  .content {
+  width: 704px;
+}
+}
+
+@media screen and (min-width: 1440px) {
+  .content {
+  width: 1225px;
+}
+}

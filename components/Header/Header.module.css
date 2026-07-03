@@ -1,0 +1,297 @@
+/* --- БАЗОВІ СТИЛІ ДЛЯ МОБІЛКИ (Mobile First від 320px) --- */
+
+.headerBgWrapper {
+  background-color: var(--darck-brown);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  color: var(--white);
+  padding: 14px 0px;
+  max-width: 361px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    max-width: 704px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    max-width: 1225px;
+  }
+}
+
+.desktopNavBox {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.desktopNavBox .navList {
+  display: none;
+}
+
+.navList,
+.linksList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navList {
+  align-items: center;
+  gap: 32px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--white);
+}
+
+.navLink,
+.link {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    color 0.2s ease-in-out,
+    cursor 0.2s ease-in-out;
+}
+
+.activeLink {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 4px;
+}
+
+/* --- Іконкa Бургер меню --- */
+.burgerBtn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.burgerLine,
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--white);
+  transition: all 0.2s ease;
+}
+
+/* --- Мобільне Бургер-меню --- */
+
+.modalMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--darck-brown);
+  z-index: 1000;
+  padding: 14px 16px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  max-width: 393px;
+  height: 359px;
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--white);
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  gap: 32px;
+  width: 100%;
+}
+
+.linksList {
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.link,
+.activeLink {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
+}
+
+.userSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Спільні стилі для мобільних кнопок */
+
+.mobBtnRegister,
+.mobBtnAddRecipe {
+  border-radius: 8px;
+  width: calc(100vw - 48px);
+  max-width: 361px;
+  padding: 12px 0;
+  background-color: var(--light-brown);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  display: block;
+  color: var(--white);
+  margin-top: auto;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease-in-out,
+    transform 0.1s ease-in-out;
+}
+
+.mobBtnRegister:active,
+.mobBtnAddRecipe:active {
+  box-shadow:
+    0 0 0 6px rgba(78, 70, 180, 0.12),
+    0 0 0 2px #fff;
+  background-color: var(--light-brown);
+}
+
+.mobBtnAddRecipe:hover,
+.mobBtnRegister:hover,
+.mobBtnAddRecipe:focus,
+.mobBtnRegister:focus {
+  background-color: var(--brown);
+}
+
+.linksList .link {
+  font-weight: 600;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 0.7;
+}
+
+/* --- ТАБЛЕТ (від 768px) --- */
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 14px 0px;
+  }
+
+  .burgerBtn {
+    display: none;
+  }
+
+  .modalMenu {
+    display: none !important;
+  }
+
+  .desktopNavBox .navList {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .deskAddRecipeBtn,
+  .deskRegisterBtn {
+    border-radius: 8px;
+    padding: 12px 16px;
+    width: 100%;
+    background-color: var(--light-brown);
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+    color: var(--white);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease-in-out,
+      transform 0.1s ease-in-out;
+  }
+
+  .deskAddRecipeBtn:active,
+  .deskRegisterBtn:active {
+    box-shadow:
+      0 0 0 6px rgba(78, 70, 180, 0.12),
+      0 0 0 2px #fff;
+    background-color: #9b6c43;
+  }
+
+  .deskAddRecipeBtn:hover,
+  .deskRegisterBtn:hover,
+  .deskAddRecipeBtn:focus,
+  .deskRegisterBtn:focus {
+    background-color: var(--brown);
+  }
+
+  .link,
+  .activeLink {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--white);
+  }
+
+  .navItem {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/*  --- ДЕСКТОП (від 1440px) ---  */
+
+@media screen and (min-width: 1440px) {
+  .header {
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 0px;
+  }
+
+  .desktopNavBox .navList {
+    gap: 32px;
+  }
+
+  .navLink {
+    font-size: 16px;
+  }
+}
