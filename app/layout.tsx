@@ -9,56 +9,100 @@ import 'swiper/css/pagination';
 import { Toaster } from 'react-hot-toast';
 
 import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
-
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import { Metadata } from 'next';
 
-export const metadata = {
-  metadataBase: new URL('http://localhost:3000'),
-  title: 'Tasteorama',
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
+  : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+  title: 'TravelTrucks - Campers of your dreams',
+  description:
+    'You can find everything you want in our catalog. Rent the best camper vans for your perfect road trip.',
+  keywords: ['camper rental', 'rent motorhome', 'camper vans', 'road trip', 'rent campers Ukraine'],
+  authors: [{ name: 'TravelTrucks Team' }],
+
+  openGraph: {
+    title: 'TravelTrucks - Campers of your dreams',
+    description:
+      'You can find everything you want in our catalog. High-quality camper vans for unforgettable journeys.',
+    url: baseUrl, // Теперь ссылка на страницу в OG-тегах тоже динамическая
+    siteName: 'TravelTrucks',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'TravelTrucks - Premium Camper Vans',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TravelTrucks - Campers of your dreams',
+    description:
+      'You can find everything you want in our catalog. High-quality camper vans for unforgettable journeys.',
+    images: ['/images/og-image.jpg'],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
-const montserrat = localFont({
+const inter = localFont({
   src: [
     {
-      path: '../public/fonts/Montserrat-Regular.woff2',
+      path: '../public/fonts/Inter-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../public/fonts/Montserrat-SemiBold.woff2',
+      path: '../public/fonts/Inter-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Inter-SemiBold.woff2',
       weight: '600',
       style: 'normal',
     },
-    {
-      path: '../public/fonts/Montserrat-Bold.woff2',
-      weight: '700',
-      style: 'normal',
-    },
   ],
-  variable: '--font-main',
+  variable: '--font-family',
 });
 
-const dmSans = localFont({
+const manrope = localFont({
   src: [
     {
-      path: '../public/fonts/DMSans-Bold.woff2',
-      weight: '700',
+      path: '../public/fonts/Manrope-Regular.woff2',
+      weight: '400',
       style: 'normal',
     },
   ],
-  variable: '--font-heading',
+  variable: '--second-family',
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
         <TanStackProvider>
+          <Toaster position="top-right" />
           <Header />
           {children}
-          <Footer />
-          <Toaster position="top-right" />
         </TanStackProvider>
       </body>
     </html>

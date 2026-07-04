@@ -1,19 +1,15 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'ftp.goit.study',
-        pathname: '/img/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
+        hostname: 'ac.goit.global',
+        port: '',
+        pathname: '/**', // Разрешает любые пути на этом сервере
       },
     ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

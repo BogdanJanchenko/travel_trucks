@@ -1,119 +1,102 @@
-# Tasteorama
+# TravelTrucks 🚐
 
-## Про проєкт
+Фронтенд вебзастосунку для компанії **TravelTrucks**, яка займається орендою кемперів. Застосунок дозволяє переглядати каталог кемперів, фільтрувати їх за різними критеріями та переглядати детальну інформацію про кожен кемпер, включаючи галерею зображень, відгуки та форму бронювання.
 
-**Tasteorama** — fullstack вебзастосунок для роботи з кулінарними рецептами. Frontend побудований на Next.js, backend — окремий REST API ([tasteorama-server](https://github.com/BogdanJanchenko/tasteorama-server)).
+## 📋 Опис проєкту
 
-### Що вміє застосунок
+Проєкт складається з трьох основних сторінок:
 
-- **Перегляд рецептів** — список страв на головній сторінці з картками (фото, назва, час, опис, калорії).
-- **Пошук і фільтри** — за назвою, категорією та інгредієнтом.
-- **Детальна сторінка рецепта** — повна інформація: інгредієнти з кількістю, інструкція, категорія, час приготування.
-- **Обране** — авторизований користувач може зберігати рецепти в favourites.
-- **Особистий кабінет** — власні рецепти та список обраного (`/profile/own`, `/profile/favorites`).
-- **Додавання рецепта** — форма з валідацією, вибором категорії, інгредієнтів і завантаженням фото.
-- **Реєстрація та вхід** — авторизація через backend API.
+- **Домашня сторінка (`/`)** — банер з основним закликом до дії та переходом до каталогу.
+- **Сторінка каталогу (`/catalog`)** — список доступних кемперів із фільтрацією за локацією, типом кузова, типом двигуна та типом трансмісії, а також пагінацією у форматі "Load More".
+- **Сторінка деталей кемпера (`/catalog/[camperId]`)** — повна інформація про кемпер: галерея зображень, відгуки користувачів (рейтинг у форматі п'ятизіркової шкали) та форма бронювання.
 
-### Яку задачу вирішує
+## ✨ Основні функції
 
-Проєкт об'єднує в одному інтерфейсі **пошук, перегляд, збереження та створення** рецептів — щоб користувачу не доводилось шукати страви в різних місцях або вести записи окремо. Це зручне рішення для тих, хто готує вдома і хоче швидко знаходити ідеї страв, фільтрувати їх за інгредієнтами та зберігати улюблені рецепти.
+- 🏠 Домашня сторінка з переходом до каталогу по кнопці **View Now**
+- 🔍 Фільтрація кемперів за локацією, типом кузова, двигуна та трансмісії (через query-параметри бекенду)
+- ♾️ Пагінація каталогу через `useInfiniteQuery` (TanStack Query) — довантаження по 4 картки
+- 🖼️ Галерея зображень кемпера (Swiper — thumbs gallery loop)
+- ⭐ Відгуки користувачів з рейтингом
+- 📝 Форма бронювання з відправкою даних на бекенд і нотифікацією про успіх
+- 🔗 Відкриття сторінки деталей кемпера в новій вкладці
 
-## Технології
+## 🛠️ Технології
 
-- **Next.js** (App Router)
-- **React**, **TypeScript**
-- **CSS Modules**, **modern-normalize**
-- **TanStack Query** — робота з серверними даними
-- **Zustand** — клієнтський стан
-- **Formik** + **Yup** — форми та валідація
-- **Axios** — HTTP-запити
-- **react-hot-toast** — сповіщення
+- [Next.js](https://nextjs.org/) (App Router)
+- [TypeScript](https://www.typescriptlang.org/)
+- [TanStack Query](https://tanstack.com/query/latest) (`useInfiniteQuery`)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Swiper](https://swiperjs.com/) — галерея зображень
+- CSS Modules / Tailwind CSS — _(вкажіть, що саме використали)_
 
-Backend проєкту: [tasteorama-server](https://github.com/BogdanJanchenko/tasteorama-server)
+## 🌐 Бекенд
 
-## Як запустити проєкт
+Дані отримуються з API: [https://campers-api.goit.study](https://campers-api.goit.study)
 
-### Передумови
+## 🚀 Встановлення та запуск
 
-- [Node.js](https://nodejs.org/) (LTS)
-- Запущений backend API (локально або на Render)
+1. Клонуйте репозиторій:
 
-### 1. Клонування репозиторію
+   ```bash
+   git clone https://github.com/<ваш-username>/<назва-репозиторію>.git
+   cd <назва-репозиторію>
+   ```
 
-```bash
-git clone https://github.com/BogdanJanchenko/tasteorama-app.git
-cd tasteorama-app
-```
+2. Встановіть залежності:
 
-### 2. Встановлення залежностей
+   ```bash
+   npm install
+   ```
 
-```bash
-npm install
-```
+3. Створіть файл `.env.local` (якщо потрібно) та додайте необхідні змінні оточення:
 
-### 3. Налаштування змінних оточення
+   ```
+   NEXT_PUBLIC_API_URL=https://campers-api.goit.study
+   ```
 
-Створіть файл `.env.local` на основі `.env.example`:
+4. Запустіть проєкт у режимі розробки:
 
-```bash
-cp .env.example .env.local
-```
+   ```bash
+   npm run dev
+   ```
 
-Для локальної розробки:
+5. Відкрийте [http://localhost:3000](http://localhost:3000) у браузері.
 
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3000
-```
-
-> Backend за замовчуванням працює на порту `3000`. Якщо порти конфліктують, запустіть frontend на іншому порту: `npm run dev -- -p 3001`.
-
-### 4. Запуск у режимі розробки
+## 📦 Збірка проєкту
 
 ```bash
-npm run dev
+npm run build
+npm run start
 ```
 
-Відкрийте [http://localhost:3000](http://localhost:3000) у браузері (або порт, який ви вказали).
+## 🌍 Деплой
 
-### Інші команди
+Проєкт задеплоєний на [Vercel](https://vercel.com/) / [Netlify](https://www.netlify.com/):
+🔗 **[Посилання на деплой](#)**
 
-```bash
-npm run build   # збірка для продакшну
-npm run start   # запуск зібраного проєкту
-npm run lint    # перевірка коду
+## 📁 Структура проєкту
+
+```
+travel-trucks/
+├── app/
+│   ├── page.tsx                 # Домашня сторінка
+│   ├── catalog/
+│   │   ├── page.tsx              # Сторінка каталогу
+│   │   └── [camperId]/
+│   │       └── page.tsx          # Сторінка деталей кемпера
+│   └── layout.tsx
+├── components/
+├── services/                     # Запити до API
+├── types/                        # Типи TypeScript
+├── public/
+└── README.md
 ```
 
-## Як розгорнути проєкт
+## 👤 Автор
 
-1. Зберіть проєкт: `npm run build`
-2. Запустіть: `npm run start`
-3. У змінних оточення на хостингу вкажіть:
+**[Ваше ім'я]**
+GitHub: [@ваш-username](https://github.com/<ваш-username>)
 
-```env
-NEXT_PUBLIC_API_URL=https://tasteorama-server.onrender.com
-```
+## 📄 Ліцензія
 
-> **Важливо:** `NEXT_PUBLIC_API_URL` — це базова адреса API, а не сторінка документації.  
-> Наприклад, запити йдуть на `https://tasteorama-server.onrender.com/api/recipes`.
-
-## Команда
-
-- [Bogdan Janchenko](https://github.com/BogdanJanchenko) - Team Lead
-- [Vitalina Sinkova](https://github.com/Vitalina90)- Scrum Master
-- [Daria Golovashova](https://github.com/DariaGolovashova)
-- [Yuriy Stepanishin](https://github.com/YuriyStepanishin)
-- [Tetiana Furmanets](https://github.com/tetiana-furmanets)
-- [Natan Diachuk](https://github.com/d-natan)
-- [Serhii Muzalevskyi](https://github.com/muzal57)
-- [Yevhenii Shevchenko](https://github.com/Yevhenii-Shevchenko)
-- [Marta](https://github.com/mdarntl-code)
-- [Dima Kaznadiy](https://github.com/Dima-Kaznadiy)
-- [Mykola Gumeniuk](https://github.com/GumeniukMykolaMyhailovych)
-- [Diana Harrison/Tesliuk](https://github.com/HarrisonDiana)
-
-## Супутня інформація
-
-- [Макет у Figma](https://www.figma.com/design/ktViLr1e38fGcw5Z1WU1dQ/Tasteorama?node-id=6-39&p=f&t=vtfZNZyyTnrFMqsU-0)
-- [Backend-репозиторій](https://github.com/BogdanJanchenko/tasteorama-server)
-- [Swagger API (документація backend)](https://tasteorama-server.onrender.com/api-docs/)
-- Продакшн API: `https://tasteorama-server.onrender.com`
+Цей проєкт створено в навчальних цілях.

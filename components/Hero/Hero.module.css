@@ -1,95 +1,60 @@
 .hero {
   position: relative;
+  text-align: left;
   width: 100%;
-  justify-content: center;
-  /* max-width: 393px; */
-  height: 587px;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
-
-  padding: 128px 32px;
-  gap: 24px;
-
-  background: url('/photos/hero-img.jpg') center / cover no-repeat;
-  /* background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
+  justify-content: center;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(270deg, #0000004d 30%, #000000e5 90%);
-
-  z-index: 1;
+.img {
+  object-fit: cover;
+  object-position: center;
 }
 
 .heroContent {
-  position: relative;
-  z-index: 2;
-
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 361px;
+  gap: 16px;
+  position: absolute;
+  top: 195px;
+  transform: none;
+  color: var(--white);
+  width: 1312px;
 }
 
-@media screen and (min-width: 768px) {
-  .heroContent {
-    max-width: 704px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .heroContent {
-    max-width: 1225px;
-    width: 1225px;
-  }
-}
-
-.hero h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600px;
-  /* font-style: 'SemiBold'; */
+.heroContent h1 {
+  margin: 0;
   font-size: 48px;
-  line-height: 1;
-  letter-spacing: 0px;
-  color: #ffffff;
+  color: var(--white);
+  font-weight: 600;
+  line-height: 32px;
 }
 
-.heroToast {
-  position: relative;
-  z-index: 3;
-
-  margin-top: 12px;
-  /* padding: 10px 14px; */
-
-  background: rgba(225, 225, 225, 0.9);
-  color: #000;
-  font-size: 14px;
+.heroContent p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--white);
 }
 
-@media screen and (min-width: 768px) {
-  .hero {
-    /* max-width: 768px; */
-    height: 443px;
-    background: url('/photos/hero-img.jpg') center -50px / cover no-repeat;
-  }
-
-  /* .heroContent {
-    padding: 0 20px;
-  } */
-  .hero h1 {
-    font-size: 36px;
-  }
+.heroContent button {
+  width: 173px;
+  height: 56px;
+  background-color: var(--grey-green);
+  color: var(--white);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 200px;
+  font-size: 16px;
 }
 
-@media screen and (min-width: 1440px) {
-  .hero {
-    /* max-width: 1440; */
-    background: url('/photos/hero-img.jpg') center -130px / cover no-repeat;
-  }
+.heroContent button:hover {
+  background-color: var(--green-hover);
 }

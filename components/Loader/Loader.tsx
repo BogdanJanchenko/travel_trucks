@@ -1,12 +1,16 @@
 'use client';
 
-import { ClipLoader } from 'react-spinners';
 import css from './Loader.module.css';
 
 const Loader = () => {
   return (
-    <div className={css.overlay} aria-busy="true" aria-label="Завантаження...">
-      <ClipLoader loading={true} color="#808000" size={52} speedMultiplier={0.9} />
+    <div className={css.overlay}>
+      <div className={css.loaderCard}>
+        <div className={css.spinner} />
+
+        <h3 className={css.title}>Loading trucks...</h3>
+        <p className={css.subtitle}>Please wait while we fetch the best travel trucks for you</p>
+      </div>
     </div>
   );
 };
